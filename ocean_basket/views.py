@@ -1,3 +1,7 @@
+""" This file contains the views for the Ocean Basket app. """
 from django.shortcuts import render
 
-# Create your views here.
+
+def home(request):
+    """ This view renders the index.html template. """
+    return render(request, 'index.html')
