@@ -9,3 +9,4 @@ node_modules/
 *.pyc
 *.sqlite3
 ob2.0_vde/
+.vscode/
