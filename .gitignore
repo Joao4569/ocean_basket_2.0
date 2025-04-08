@@ -4,9 +4,36 @@ core.python*
 env.py
 __pycache__/
 *.py[cod]
-node_modules/
 .github/
 *.pyc
 *.sqlite3
 ob2.0_vde/
 .vscode/
+
+# Test files and coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Coverage reports
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Backup and temporary files
+*.bak
+*.tmp
+*.orig
+
+# PyInstaller artifacts
+*.spec
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Local development tools
+*.code-workspace
