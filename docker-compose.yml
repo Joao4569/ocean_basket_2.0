@@ -1,0 +1,19 @@
+# This names the project
+name: ocean-basket-v2-0-project
+
+services:
+  # Define the service for the application
+  app:
+    # Build the image if it doesn't exist
+    #build:
+      #context: .  # Use the current directory as the build context
+      #dockerfile: dockerfile  # Specify the Dockerfile to use for building the image
+
+    # Specify the image to use for the container
+    image: ocean-basket-image
+    # Specify the container name
+    container_name: ocean-basket-container
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
+    volumes:
+      - .:/ocean-basket-app  # Mount the current directory to /ocean-basket-app (taken from WORKDIR in the dockerfile) in the container

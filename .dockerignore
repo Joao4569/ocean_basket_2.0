@@ -1,0 +1,62 @@
+# Virtual environments
+ob2.0_vde/
+
+# VSCode settings
+.vscode/
+
+# Test files and folders
+tests/
+*.test.*
+
+# Documentation
+docs/
+*.md
+
+# CI/CD configuration files
+.github/
+.gitlab-ci.yml
+
+# Local development tools
+*.code-workspace
+
+# Backup files
+*.bak
+*.orig
+
+# Temporary files
+*.cache
+*.bak
+*.tmp
+*.pid
+*.seed
+*.cover
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# PyInstaller artifacts
+*.spec
+
+# SQLite database files
+*.sqlite3
+
+# Migrations
+ocean_basket/migrations/
+
+# Bytecode files
+*.py[cod]
+
+# Django secret key files
+env.py
+
+# System-specific files
+.DS_Store
+Thumbs.db
