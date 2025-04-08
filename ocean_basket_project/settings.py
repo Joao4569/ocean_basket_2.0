@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,14 +84,14 @@ WSGI_APPLICATION = 'ocean_basket_project.wsgi.application'
 #     }
 # }
 
-# Define the database settings for PostgreSQL (Development)
+# Define the database settings for PostgreSQL (Production
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ocean_basket_db',
-        'USER': 'ocean_basket_user',
-        'PASSWORD': 'ocean_basket_password',
-        'HOST': 'obdb',  # Matches the service name in docker-compose.yml
+        'NAME': 'ocean_basket_production_database',
+        'USER': 'ocean_basket_production_database_user',
+        'PASSWORD': 'SFXFiVSr5uKjwowWYCawvooeCVyvfJgY',
+        'HOST': 'dpg-cvqjjjqdbo4c73djonhg-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
@@ -142,6 +143,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+""" This is the location where static files will be collected to
+when you run `collectstatic` """
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# This is the location where static files will be served from in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# This is the storage backend used for serving static files in production
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
