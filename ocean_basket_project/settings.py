@@ -93,6 +93,7 @@ WSGI_APPLICATION = 'ocean_basket_project.wsgi.application'
 
 
 # Define the database settings for PostgreSQL (Production)
+<<<<<<< HEAD
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
@@ -104,6 +105,8 @@ WSGI_APPLICATION = 'ocean_basket_project.wsgi.application'
 #     }
 # }
 
+=======
+>>>>>>> tidy-up
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
