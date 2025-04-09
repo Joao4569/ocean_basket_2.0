@@ -17,3 +17,27 @@ services:
       - "8000:8000" # Map port 8000 on the host to port 8000 in the container
     volumes:
       - .:/ocean-basket-app # Mount the current directory to /ocean-basket-app (taken from WORKDIR in the dockerfile) in the container
+
+
+# Define the service for the Development database
+  obdb:
+    # Use the official PostgreSQL image from Docker Hub
+    image: postgres:17
+    # Specify the container name
+    container_name: ocean-basket-db-container
+    # Specify the restart policy for the container
+    restart: always # Restart the container if it stops
+    # Set environment variables for the database
+    environment:
+      POSTGRES_USER: ocean_basket_user # Database user
+      POSTGRES_PASSWORD: ocean_basket_password # Database password
+      POSTGRES_DB: ocean_basket_db # Database name
+    # Specify the volume for the database data
+    volumes:
+      - ocean-basket-db-data:/var/lib/postgresql/data # Persist database data in a named volume
+    ports:
+      - "5432:5432" # Map port 5432 on the host to port 5432 in the container
+
+# Define the volumes used by the services
+volumes:
+  ocean-basket-db-data:
