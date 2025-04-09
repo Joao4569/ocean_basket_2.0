@@ -21,14 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    'django-insecure-*8qlrmainaeodx+2$zsh79jwtc&@=ow3yx&3p$f!=mx6^_pez='
-)
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ocean-basket-v2-0-app.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://ocean-basket-v2-0-app.onrender.com']
 
 
 # Application definition
@@ -77,21 +77,15 @@ WSGI_APPLICATION = 'ocean_basket_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
-# Define the database settings for PostgreSQL (Production
+# Define the database settings for PostgreSQL (Production)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ocean_basket_production_database',
-        'USER': 'ocean_basket_production_database_user',
-        'PASSWORD': 'SFXFiVSr5uKjwowWYCawvooeCVyvfJgY',
-        'HOST': 'dpg-cvqjjjqdbo4c73djonhg-a.oregon-postgres.render.com',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': '5432',
     }
 }

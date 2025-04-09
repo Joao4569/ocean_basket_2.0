@@ -20,7 +20,7 @@ Version 1.0 can be found in [this repository](https://github.com/Joao4569/ocean-
 In this release I will be doing the following:
 
  - Django version 3.2.13 will be updated to Version 5.2.
- - I will make use of Python version 3.12.9 instead of 3.9.18.
+ - I will make use of Python version 3.12.10 instead of 3.9.18.
  - Make use of Docker for containerization.
  - Host the deployed app on Render instead of Heroku.
  - Make use of [TDD Test Driven Development](#Test-Driven-Development) for the construction of this version.

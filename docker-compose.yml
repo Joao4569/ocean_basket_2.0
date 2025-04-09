@@ -7,10 +7,10 @@ services:
     # Build the image if it doesn't exist
     build:
       context: . # Use the current directory as the build context
-      dockerfile: dockerfile # Specify the Dockerfile to use for building the image
+      dockerfile: Dockerfile # Specify the Dockerfile to use for building the image
 
     # Specify the image to use for the container
-    image: ocean-basket-image
+    image: ocean-basket-app-image
     # Specify the container name
     container_name: ocean-basket-app-container
     ports:
