@@ -95,7 +95,7 @@ This process is currently manual, requiring the image to be rebuilt and pushed f
 To push the image to GitHub Packages, use the following commands:
 
 ```powershell
-docker docker build -t ghcr.io/joao4569/ocean-basket-app-image .
+docker build -t ghcr.io/joao4569/ocean-basket-app-image .
 docker push ghcr.io/joao4569/ocean-basket-app-image:latest
 ```
 
