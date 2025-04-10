@@ -72,5 +72,5 @@ class TestAllauthSignUp(TestCase):
         self.assertTrue(User.objects.filter(username='newuser').exists())
         # Expect a redirect after successful signup
         self.assertEqual(response.status_code, 302)
-        # Check if the user is redirected to the home page or another expected page
+        # Check if the user is redirected to the home page
         self.assertEqual(response['Location'], '/')
