@@ -45,3 +45,32 @@ class TestAllauthLogin(TestCase):
         self.assertEqual(response.status_code, 302)
         # Check if the user is redirected to the home page
         self.assertEqual(response['Location'], '/')
+
+
+class TestAllauthSignUp(TestCase):
+    """This test case checks the functionality of the Allauth Signup page."""
+
+    def test_get_signup_page(self):
+        """Test the signup page loads correctly."""
+        # Simulate a GET request to the signup page
+        response = self.client.get('/accounts/signup/')
+        # Check the response status code and template used
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account/signup.html')
+
+    def test_signup_user(self):
+        """Test signing up a new user."""
+        # Simulate a POST request to the signup page with valid data
+        response = self.client.post('/accounts/signup/', {
+            'username': 'newuser',
+            'email': 'newuser@example.com',
+            'password1': 'strongpassword123',
+            'password2': 'strongpassword123'
+        })
+
+        # Check if the user is created
+        self.assertTrue(User.objects.filter(username='newuser').exists())
+        # Expect a redirect after successful signup
+        self.assertEqual(response.status_code, 302)
+        # Check if the user is redirected to the home page or another expected page
+        self.assertEqual(response['Location'], '/')
