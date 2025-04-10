@@ -8,15 +8,23 @@ Version 1.0 can be found in [this repository](https://github.com/Joao4569/ocean-
 
 ## Table of Contents
 
-- [Project Scope](#Project-Scope)
+- [Project Scope](#project-scope)
 
-- [Test Driven Development (TDD)](#Test-Driven-Development)
+- [Test Driven Development (TDD)](#test-driven-development)
+  - [Testing Django Views](#testing-django-views)
+    - [Criteria](#test-criteria-for-each-new-view)
+  - [Testing App Configuration](#testing-app-configuration)
+  - [Coverage](#coverage)
 
-  - [Testing Django Views](#Testing-Django-Views)
-  - [Testing App Configuration](#Testing-App-Configuration)
-  - [Coverage](#Coverage)
+- [Docker](#docker)
+  - [Development](#development)
+  - [Deployment](#deployment)
 
-- [Docker](#Docker)
+- [Access Control](#access-control)
+  - [Super User](#super-user)
+  - [Store Manager](#store-manager)
+  - [Floor Staff](#floor-staff)
+  - [Test User](#test-user)
 
 ## Project Scope
 
@@ -87,3 +95,40 @@ docker push ghcr.io/<joao4569>/ocean-basket-app:latest
 ```
 
 Ensure that the Personal Access Token is configured in your Docker CLI for authentication with GitHub Packages.
+
+
+## Access Control
+
+I have created a few users which will be helpful for testing the project:
+
+### Super User
+
+I created a Superuser in order to access the admin functions of Django. The Superuser is also what I use to create employees, as it is now a new employee can register his or her self the same way as a customer and with the Superuser logged in, one can allocate the "is Staff" property on the admin site.
+
+ Credentials:
+   - Username: **SuperUserProd**
+   - Password: **OceanBasketSuperProd4569**
+
+### Store Manager
+
+This store manager I created is a universal store manager user which can access more detailed information for the current days bookings via the application in order to be able to access customers contact details if needed for managerial purposes. This username can be allocated a new password if a new store manager is employed, this allocation must be done by the superuser.
+
+Credentials:
+   - Username: **StoreManager**
+   - Password: **Peter4569**
+
+### Floor Staff
+
+This employee I created is a universal position for any floor staff which can access basic information for the current days bookings via the application in order to plan for the days services and group numbers.
+
+Credentials:
+   - Username: **FloorStaff**
+   - Password: **OceanBasketStaff**
+
+### Test User
+
+These are the credentials for a User that I created for testing:
+
+Credentials:
+   - Username: **TestUser**
+   - Password: **OceanBasketUser**
