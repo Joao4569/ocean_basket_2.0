@@ -64,10 +64,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Django Allauth
-    'allauth',
-    'allauth.account',
+    'allauth',  # Django Allauth
+    'allauth.account',  # Django Allauth
     'ocean_basket',  # Custom app for the project
+    'crispy_forms',  # Django Crispy Forms for better form rendering
+    'crispy_bootstrap4',  # Bootstrap4 for styling forms
 ]
 
 # Login and logout redirect URLs post authentication to the home page
@@ -196,3 +197,6 @@ STORAGES = {
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Crispy Forms settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
