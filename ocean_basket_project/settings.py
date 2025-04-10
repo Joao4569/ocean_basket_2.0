@@ -44,6 +44,17 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+# Required for `allauth` to work properly
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -53,6 +64,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Django Allauth
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +79,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # Add the Allauth account middleware:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'ocean_basket_project.urls'
@@ -73,7 +89,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # Specify the location of the templates directory
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # Custom templates directory
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -19,6 +19,10 @@ from django.urls import path, include
 
 # Main hub for URL's in the project
 urlpatterns = [
+    # Admin URL for the Django admin interface
     path('admin/', admin.site.urls),
-    path('', include('ocean_basket.urls'))
+    # Include URLs from the ocean_basket app
+    path('', include('ocean_basket.urls')),
+    # Django Allauth URL patterns for authentication
+    path('accounts/', include('allauth.urls')),
 ]
