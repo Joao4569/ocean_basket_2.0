@@ -8,21 +8,21 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <!-- form container -->
-    <div class="row align-items-center">
-
-        <!-- left side column -->
-        <div class="col-0 col-sm-2 col-lg-4"></div>
     
-        <!-- form column -->
-        <div class="col-12 col-sm-8 col-lg-4 border-4 border-dark rounded p-3 m-auto">
-    
-            <!-- form title -->
-            <div class="col-12">
-                <h1 class="text-center font-elsie form-text-bold pb-3">{% trans "Welcome" %}</h1>
-            </div>
-
     {% if not SOCIALACCOUNT_ONLY %}
+        <!-- form container -->
+        <div class="row align-items-center">
+
+            <!-- left side column -->
+            <div class="col-0 col-sm-2 col-lg-4"></div>
+    
+            <!-- form column -->
+            <div class="col-12 col-sm-8 col-lg-4 border-4 border-dark rounded p-3 m-auto">
+    
+                <!-- form title -->
+                <div class="col-12">
+                    <h1 class="text-center font-elsie form-text-bold pb-3">{% trans "Welcome" %}</h1>
+                </div>
 
                 <!-- form information -->
                 <div class="col-12">
@@ -54,22 +54,23 @@
             <!-- right side column -->
             <div class="col-0 col-sm-2 col-lg-4"></div>
         
-            </div>
         
-            <!-- home button -->
-            <div class="row">
-            
-                <div class="col-3 col-sm-4 col-xl-5"></div>
-            
-                <div class="col-6 col-sm-4 col-xl-2 text-center py-3">
+        </div>
+        
+        <!-- home button -->
+        <div class="row">
+        
+            <div class="col-3 col-sm-4 col-xl-5"></div>
+        
+            <div class="col-6 col-sm-4 col-xl-2 text-center py-3">
                 <a href="/" class="button-font btn btn-outline-dark font-elsie font-weight-bold btn-block" role="button">
                     <span>Home &nbsp;</span><i class="fa-solid fa-arrow-right fa-2xs"></i>&nbsp;&nbsp;<i class="fa-solid fa-house"></i>
                 </a>
-                </div>
-            
-                <div class="col-3 col-sm-4 col-xl-5"></div>
-            
+            </div>
+        
+            <div class="col-3 col-sm-4 col-xl-5"></div>
         </div>
+    
     {% endif %}
     {% if LOGIN_BY_CODE_ENABLED or PASSKEY_LOGIN_ENABLED %}
         {% element hr %}
