@@ -1,14 +1,13 @@
-""" This file contains the test cases for the app configuration of
-the Ocean Basket app. """
+"""This file contains the test cases for the ocean_basket app."""
+import unittest
 from django.apps import apps
-from django.test import TestCase
-from ocean_basket.apps import OceanBasketConfig
+from .apps import OceanBasketConfig
 
 
-class TestOceanBasketConfig(TestCase):
-    """Test the OceanBasket app configuration."""
+class TestOceanBasketConfig(unittest.TestCase):
+    """ This class contains test cases for the OceanBasketConfig class. """
     def test_app_config(self):
-        """ Verify the app configuration is correctly set up. """
+        """ Test the OceanBasketConfig class. """
         self.assertEqual(OceanBasketConfig.name, 'ocean_basket')
         self.assertEqual(
             apps.get_app_config('ocean_basket').name,

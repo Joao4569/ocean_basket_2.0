@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     # Django Allauth
     'allauth',
     'allauth.account',
+    'ocean_basket',  # Custom app for the project
 ]
 
 MIDDLEWARE = [

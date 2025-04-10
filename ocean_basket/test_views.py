@@ -9,4 +9,4 @@ class TestHome(TestCase):
         """Test the home page loads correctly."""
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'index.html')
+        self.assertTemplateUsed(response, 'online_booking/index.html')
