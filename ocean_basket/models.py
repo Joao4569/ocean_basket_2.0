@@ -29,6 +29,6 @@ class BookingInformation(models.Model):
 
     def __str__(self):
         """This will modify the standard Django string method for
-        personalisation on admin site"""
+        personalization on admin site"""
         return (f'{self.booking_title} {self.contact_number} table for '
                 f'{self.number_of_seats} on {self.date}')
