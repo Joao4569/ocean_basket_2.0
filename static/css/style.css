@@ -101,6 +101,13 @@ footer {
   font-weight: 800;
 }
 
+/* Allauth form */
+
+#hint_id_password {
+  font-family: 'Elsie', cursive;
+  font-weight: bold;
+}
+
 /* view_booking.html */
 
 .booking_table {
