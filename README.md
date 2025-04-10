@@ -71,10 +71,15 @@ For development purposes, Docker is used to containerize the application, ensuri
 - **docker-compose.yml**: Simplifies the process of running the application by managing the container's configuration, such as port mapping and volume mounting.
 - **Volumes**: The current directory is mounted into the container to allow real-time updates during development.
 
-To start the application in a development environment, use the following command:
+To start the application in a development environment with a new image, use the following command:
 
-```bash
-docker-compose up -d
+```powershell
+docker compose up -d --build
+```
+As a best practice I clear the cache whenever significant changes have been made by using the following command:
+
+```powershell
+docker system prune
 ```
 
 ### Deployment
@@ -89,9 +94,9 @@ This process is currently manual, requiring the image to be rebuilt and pushed f
 
 To push the image to GitHub Packages, use the following commands:
 
-```bash
-docker build -t ghcr.io/<joao4569>/ocean-basket-app:latest .
-docker push ghcr.io/<joao4569>/ocean-basket-app:latest
+```powershell
+docker docker build -t ghcr.io/joao4569/ocean-basket-app-image .
+docker push ghcr.io/joao4569/ocean-basket-app-image:latest
 ```
 
 Ensure that the Personal Access Token is configured in your Docker CLI for authentication with GitHub Packages.
