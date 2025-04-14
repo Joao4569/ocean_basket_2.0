@@ -74,3 +74,12 @@ class TestAllauthSignUp(TestCase):
         self.assertEqual(response.status_code, 302)
         # Check if the user is redirected to the home page
         self.assertEqual(response['Location'], '/')
+
+
+class TestViewBookings(TestCase):
+    """This test case checks the functionality of the view_bookings page."""
+    def test_get_view_bookings_page(self):
+        """Test the view_bookings page loads correctly."""
+        response = self.client.get('/view_bookings/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'online_booking/view_bookings.html')
