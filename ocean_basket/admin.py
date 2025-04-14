@@ -1,3 +1,7 @@
-# from django.contrib import admin
+""" This module is used to register the BookingInformation model with the
+Django admin site. """
+from django.contrib import admin
+from .models import BookingInformation
 
-# Register your models here.
+
+admin.site.register(BookingInformation)
