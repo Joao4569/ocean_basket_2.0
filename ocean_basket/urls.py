@@ -6,7 +6,14 @@ from . import views
 
 urlpatterns = [
     # URL pattern for index.html
-    path('', views.home, name='home'),
-    # URL pattern for bookings.html
-    path('view_bookings/', views.view_bookings, name='view_bookings'),
+    path('', views.home, name='Home'),
+    # URL pattern for view_bookings.html
+    path('view_bookings/', views.view_bookings, name='View your bookings'),
+    # URL pattern for view_bookings_employee.html
+    path(
+            'view_bookings_employee/',
+            views.view_bookings_employee,
+            name='View days bookings'
+        ),
+
 ]

@@ -93,5 +93,5 @@ class TestViewBookingsEmployee(TestCase):
         response = self.client.get('/view_bookings_employee/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(
-            response, 'online_booking/view_bookings_employee.html'
+            response, 'online_booking/view_bookings.html'
         )
