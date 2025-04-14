@@ -15,5 +15,6 @@ urlpatterns = [
             views.view_bookings_employee,
             name='View days bookings'
         ),
-
+    # URL pattern for create_booking.html
+    path('create_booking/', views.create_booking, name='Create booking'),
 ]

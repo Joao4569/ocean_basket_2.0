@@ -2,6 +2,7 @@
 from datetime import date  # Import the date class from datetime module
 from django.shortcuts import render
 from .models import BookingInformation  # Import the model
+from .forms import BookingForm  # Import the form
 
 
 def home(request):
@@ -27,3 +28,27 @@ def view_bookings_employee(request):
         'bookings': bookings,
     }
     return render(request, 'online_booking/view_bookings.html', context)
+
+
+def create_booking(request):  # pylint: disable=W0612
+    """ This view renders the create_booking.html template. """
+    if request.method == 'POST':
+        booking_form = BookingForm(request.POST)
+        if booking_form.is_valid():
+            booking_form.instance.username = request.user.username
+            booking_form.save()
+            bookings = BookingInformation.objects.all()  # pylint: disable=no-member # noqa: E501
+            context = {
+                'bookings': bookings,
+            }
+            return render(
+                request, 'online_booking/view_bookings.html', context
+            )
+    else:
+        booking_form = BookingForm()
+
+    return render(
+        request,
+        'online_booking/create_booking.html',
+        {'booking_form': booking_form}
+    )
