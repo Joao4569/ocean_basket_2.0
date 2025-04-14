@@ -95,3 +95,12 @@ class TestViewBookingsEmployee(TestCase):
         self.assertTemplateUsed(
             response, 'online_booking/view_bookings.html'
         )
+
+
+class CreateBooking(TestCase):
+    """This test case checks the functionality of the create_booking page."""
+    def test_get_create_booking_page(self):
+        """Test the create_booking page loads correctly."""
+        response = self.client.get('/create_booking/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'online_booking/create_booking.html')
