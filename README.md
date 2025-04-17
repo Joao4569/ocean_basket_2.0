@@ -43,7 +43,7 @@ In this release I will be doing the following:
 
 I am making use of TDD for the construction of this new version. Here is how I plan to do so:
 
-### Testing Django Views
+### Testing Custom Views
 
 Prior to constructing each view on Django, I will first create a test for that view which will initially fail as the view will not exist yet. After I have created the view then the test should pass, this process will be repeated for each new view created.
 
@@ -64,6 +64,34 @@ Each new view will have a test created which will test for the following:
 6. **Database Integrity**: Tests verify that the database reflects the expected state after actions like creating, editing, or deleting bookings.
 
 By following these criteria, I ensure that each view is thoroughly tested for functionality, user experience, and security. This approach demonstrates my commitment to quality and attention to detail in the development process.
+
+### Testing Custom Models
+
+To ensure the functionality and reliability of the `BookingInformation` model, I have implemented the following test cases:
+
+1. **String Representation**: A test verifies that the string representation of the model instance is formatted correctly, providing a concise summary of the booking details.
+
+2. **Field Constraints**: Tests ensure that the model fields enforce constraints such as `max_length` for text fields and valid formats for other fields. For example, an exception is raised if the `booking_title` exceeds the maximum allowed length.
+
+3. **Service Choices Validation**: A test validates that the `service` field only accepts predefined choices (e.g., `LUNCH`, `DINNER`). Any invalid choice results in an exception.
+
+4. **Model Creation**: A test confirms that a `BookingInformation` instance can be successfully created and saved to the database. This ensures that the model integrates correctly with the database.
+
+By including these tests, I demonstrate my commitment to ensuring the robustness and reliability of the application's core data model. These tests also highlight my attention to detail and adherence to best practices in software development.
+
+### Testing Forms
+
+To ensure the functionality and reliability of the custom forms used in the application, I have implemented the following test cases for the `CustomSignupForm`:
+
+1. **Required Fields**: Tests verify that required fields such as `first_name` and `last_name` are mandatory. If these fields are left blank, the form is considered invalid, and appropriate error messages are displayed.
+
+2. **Field Length Constraints**: Tests ensure that fields like `first_name` and `last_name` do not exceed their maximum allowed length. If the length exceeds the limit, the form is invalid, and an error is raised.
+
+3. **Form Validity**: A test confirms that the form is valid when all required fields are provided with valid data. This ensures that the form behaves as expected under normal conditions.
+
+4. **Password Matching**: Although not explicitly shown in the test cases, the form ensures that `password1` and `password2` match before submission. This is a critical validation for user registration.
+
+By including these tests, I demonstrate my commitment to ensuring the robustness and reliability of the application's forms. These tests highlight my attention to detail and adherence to best practices in form validation and user experience.
 
 ### Testing App Configuration
 
