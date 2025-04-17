@@ -75,3 +75,11 @@ def edit_booking(request, booking_id):
         "edit_form": edit_form
     }
     return render(request, "online_booking/edit_booking.html", context)
+
+
+def delete_booking(request, booking_id):
+    """This view handles deleting an existing booking."""
+    booking_instance = get_object_or_404(BookingInformation, id=booking_id)
+    booking_instance.delete()
+    # Redirect to the bookings page after deletion
+    return redirect('view_bookings')

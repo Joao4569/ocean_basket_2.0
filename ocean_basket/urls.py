@@ -23,4 +23,10 @@ urlpatterns = [
             views.edit_booking,
             name='Edit booking'
         ),
+    # URL pattern for delete_booking.html
+    path(
+            'delete_booking/<int:booking_id>/',
+            views.delete_booking,
+            name='Delete booking'
+        ),
 ]
