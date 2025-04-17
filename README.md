@@ -11,12 +11,14 @@ Version 1.0 can be found in [this repository](https://github.com/Joao4569/ocean-
 - [Project Scope](#project-scope)
 
 - [Test Driven Development (TDD)](#test-driven-development)
+
   - [Testing Django Views](#testing-django-views)
     - [Criteria](#test-criteria-for-each-new-view)
   - [Testing App Configuration](#testing-app-configuration)
   - [Coverage](#coverage)
 
 - [Docker](#docker)
+
   - [Development](#development)
   - [Deployment](#deployment)
 
@@ -49,13 +51,31 @@ Prior to constructing each view on Django, I will first create a test for that v
 
 Each new view will have a test created which will test for the following:
 
-1. Test that the HTTP response status code for the view is 200, which means the page loaded successfully without errors. If the status code is not 200, the test will fail.
+1. **HTTP Response Status Code**: Test that the HTTP response status code for the view is 200, which means the page loaded successfully without errors. If the status code is not 200, the test will fail.
 
-2. Test that the correct template is used when rendering the view. If a different template is used or no template is used at all, the test will fail.
+2. **Template Rendering**: Test that the correct template is used when rendering the view. If a different template is used or no template is used at all, the test will fail.
+
+3. **User Authentication**: For views that require user authentication, tests ensure that only authenticated users can access the view. If an unauthenticated user attempts to access the view, the test will check for a redirect to the login page.
+
+4. **Form Handling**: For views that involve forms (e.g., creating or editing bookings), tests verify that valid form submissions result in the expected changes to the database and that invalid submissions return appropriate error messages.
+
+5. **Redirects**: For views that involve actions like login, signup, or deleting a booking, tests ensure that the user is redirected to the correct page after the action is completed.
+
+6. **Database Integrity**: Tests verify that the database reflects the expected state after actions like creating, editing, or deleting bookings.
+
+By following these criteria, I ensure that each view is thoroughly tested for functionality, user experience, and security. This approach demonstrates my commitment to quality and attention to detail in the development process.
 
 ### Testing App Configuration
 
 The `test_app_config.py` file contains a unit test to verify the configuration of the `ocean_basket` app. This test ensures that the app is correctly registered and configured within the Django project.
+
+#### How App Configuration is Tested
+
+1. **App Name Verification**: The test checks that the `name` attribute of the `OceanBasketConfig` class matches the expected app name, `ocean_basket`. This ensures that the app's configuration is correctly defined in the `apps.py` file.
+
+2. **Django App Registry**: The test verifies that the app is properly registered in Django's app registry by comparing the app name retrieved from the registry with the expected app name. This ensures that the app is correctly recognized by the Django framework.
+
+By including these tests, I ensure that the foundational configuration of the `ocean_basket` app is accurate and reliable. This demonstrates my attention to detail and commitment to maintaining a robust and well-structured application.
 
 ### Coverage
 
@@ -76,6 +96,7 @@ To start the application in a development environment with a new image, use the 
 ```powershell
 docker compose up -d --build
 ```
+
 As a best practice I clear the cache whenever significant changes have been made by using the following command:
 
 ```powershell
@@ -101,7 +122,6 @@ docker push ghcr.io/joao4569/ocean-basket-app-image:latest
 
 Ensure that the Personal Access Token is configured in your Docker CLI for authentication with GitHub Packages.
 
-
 ## Access Control
 
 I have created a few users which will be helpful for testing the project:
@@ -110,30 +130,34 @@ I have created a few users which will be helpful for testing the project:
 
 I created a Superuser in order to access the admin functions of Django. The Superuser is also what I use to create employees, as it is now a new employee can register his or her self the same way as a customer and with the Superuser logged in, one can allocate the "is Staff" property on the admin site.
 
- Credentials:
-   - Username: **SuperUserProd**
-   - Password: **OceanBasketSuperProd4569**
+Credentials:
+
+- Username: **SuperUserProd**
+- Password: **OceanBasketSuperProd4569**
 
 ### Store Manager
 
 This store manager I created is a universal store manager user which can access more detailed information for the current days bookings via the application in order to be able to access customers contact details if needed for managerial purposes. This username can be allocated a new password if a new store manager is employed, this allocation must be done by the superuser.
 
 Credentials:
-   - Username: **StoreManager**
-   - Password: **Peter4569**
+
+- Username: **StoreManager**
+- Password: **Peter4569**
 
 ### Floor Staff
 
 This employee I created is a universal position for any floor staff which can access basic information for the current days bookings via the application in order to plan for the days services and group numbers.
 
 Credentials:
-   - Username: **FloorStaff**
-   - Password: **OceanBasketStaff**
+
+- Username: **FloorStaff**
+- Password: **OceanBasketStaff**
 
 ### Test User
 
 These are the credentials for a User that I created for testing:
 
 Credentials:
-   - Username: **TestUser**
-   - Password: **OceanBasketUser**
+
+- Username: **TestUser**
+- Password: **OceanBasketUser**
