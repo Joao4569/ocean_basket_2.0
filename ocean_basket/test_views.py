@@ -112,6 +112,7 @@ class TestEditBooking(TestCase):
 
     def setUp(self):
         """Set up a test booking instance."""
+        # pylint: disable=no-member
         self.booking = BookingInformation.objects.create(
             username="testuser",
             booking_title="Birthday Party",
@@ -126,3 +127,32 @@ class TestEditBooking(TestCase):
         response = self.client.get(f'/edit_booking/{self.booking.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'online_booking/edit_booking.html')
+
+
+class TestDeleteBooking(TestCase):
+    """This test case checks the functionality of the delete_booking page."""
+
+    def setUp(self):
+        """Set up a test booking instance."""
+        # pylint: disable=no-member
+        self.booking = BookingInformation.objects.create(
+            username="testuser",
+            booking_title="Meeting",
+            service=BookingInformation.DINNER,
+            number_of_seats=2,
+            date="2023-11-01",
+            contact_number="9876543210"
+        )
+
+    def test_delete_booking(self):
+        """Test deleting a booking."""
+        response = self.client.post(f'/delete_booking/{self.booking.id}/')
+        # Check if the booking is deleted
+        # pylint: disable=no-member
+        self.assertFalse(
+            BookingInformation.objects.filter(id=self.booking.id).exists()
+        )
+        # Expect a redirect after successful deletion
+        self.assertEqual(response.status_code, 302)
+        # Check if the user is redirected to the view bookings page
+        self.assertEqual(response['Location'], '/view_bookings/')
