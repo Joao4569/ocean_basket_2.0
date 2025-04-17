@@ -11,14 +11,13 @@ Version 1.0 can be found in [this repository](https://github.com/Joao4569/ocean-
 - [Project Scope](#project-scope)
 
 - [Test Driven Development (TDD)](#test-driven-development)
-
-  - [Testing Django Views](#testing-django-views)
-    - [Criteria](#test-criteria-for-each-new-view)
+  - [Testing Custom Views](#testing-custom-views)
+  - [Testing Custom Models](#testing-custom-models)
+  - [Testing Forms](#testing-forms)
   - [Testing App Configuration](#testing-app-configuration)
   - [Coverage](#coverage)
 
 - [Docker](#docker)
-
   - [Development](#development)
   - [Deployment](#deployment)
 
