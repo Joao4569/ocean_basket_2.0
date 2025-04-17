@@ -1,6 +1,6 @@
 """ This file contains the views for the Ocean Basket app. """
 from datetime import date  # Import the date class from datetime module
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect  # Import render, get_object_or_404, and redirect
 from .models import BookingInformation  # Import the model
 from .forms import BookingForm  # Import the form
 
@@ -52,3 +52,21 @@ def create_booking(request):  # pylint: disable=W0612
         'online_booking/create_booking.html',
         {'booking_form': booking_form}
     )
+
+
+def edit_booking(request, booking_id):
+    """This view handles editing an existing booking."""
+    booking_instance = get_object_or_404(BookingInformation, id=booking_id)
+
+    if request.method == 'POST':
+        edit_form = BookingForm(request.POST, instance=booking_instance)
+        if edit_form.is_valid():
+            edit_form.save()
+            return redirect('view_bookings')  # Redirect to the bookings page after saving
+    else:
+        edit_form = BookingForm(instance=booking_instance)
+
+    context = {
+        "edit_form": edit_form
+    }
+    return render(request, "online_booking/edit_booking.html", context)

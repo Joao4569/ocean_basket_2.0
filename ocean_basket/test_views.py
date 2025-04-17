@@ -2,6 +2,7 @@
 ocean_basket app. """
 from django.test import TestCase
 from django.contrib.auth.models import User
+from .models import BookingInformation  # Import the BookingInformation model
 
 
 class TestHome(TestCase):
@@ -108,8 +109,20 @@ class CreateBooking(TestCase):
 
 class TestEditBooking(TestCase):
     """This test case checks the functionality of the edit_booking page."""
+
+    def setUp(self):
+        """Set up a test booking instance."""
+        self.booking = BookingInformation.objects.create(
+            username="testuser",
+            booking_title="Birthday Party",
+            service=BookingInformation.LUNCH,
+            number_of_seats=4,
+            date="2023-10-01",
+            contact_number="1234567890"
+        )
+
     def test_get_edit_booking_page(self):
         """Test the edit_booking page loads correctly."""
-        response = self.client.get('/edit_booking/')
+        response = self.client.get(f'/edit_booking/{self.booking.id}/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'online_booking/edit_booking.html')
