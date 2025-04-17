@@ -1,8 +1,12 @@
 """ This file contains the views for the Ocean Basket app. """
-from datetime import date  # Import the date class from datetime module
-from django.shortcuts import render, get_object_or_404, redirect  # Import render, get_object_or_404, and redirect
-from .models import BookingInformation  # Import the model
-from .forms import BookingForm  # Import the form
+# Import the date class from datetime module
+from datetime import date
+# Import render, get_object_or_404, and redirect
+from django.shortcuts import render, get_object_or_404, redirect
+# Import the Booking information model
+from .models import BookingInformation
+# Import the Booking form
+from .forms import BookingForm
 
 
 def home(request):
@@ -62,7 +66,8 @@ def edit_booking(request, booking_id):
         edit_form = BookingForm(request.POST, instance=booking_instance)
         if edit_form.is_valid():
             edit_form.save()
-            return redirect('view_bookings')  # Redirect to the bookings page after saving
+            # Redirect to the bookings page after saving
+            return redirect('view_bookings')
     else:
         edit_form = BookingForm(instance=booking_instance)
 
